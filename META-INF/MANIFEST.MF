@@ -5,5 +5,6 @@ Bundle-SymbolicName: Indenter;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
+Bundle-Activator: cz.slanyj.eclipse.indenter.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
