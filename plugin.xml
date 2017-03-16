@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension point="org.eclipse.ui.commands">
+      <category name="Editor Indentation"
+                id="cz.slanyj.eclipse.indenter.commands.category">
+      </category>
+      <command name="Tab Changer Command"
+               id="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+               categoryId="cz.slanyj.eclipse.indenter.commands.category">
+         <commandParameter id="cz.slanyj.eclipse.indenter.params.tabWidth"
+                           name="Tab width"
+                           optional="false"/>
+      </command>
+   </extension>
+   <extension point="org.eclipse.ui.handlers">
+      <handler commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+               class="cz.slanyj.eclipse.indenter.TabWidthHandler">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">
+      <key commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+           contextId="org.eclipse.ui.contexts.window"
+           sequence="M1+6"
+           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+      </key>
+   </extension>
+   <extension point="org.eclipse.ui.menus">
+      <!-- Toolbar -->
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar id="cz.slanyj.eclipse.indenter.toolbars.main">
+            <command id="cz.slanyj.eclipse.indenter.toolbars.commands.setTabWidth"
+                     commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+                     icon="icons/sample.gif"
+                     tooltip="Change Tab Width"
+                     style="pulldown">
+            </command>
+         </toolbar>
+      </menuContribution>
+      <!-- Dropdown items for toolbar -->
+      <menuContribution
+            locationURI="menu:cz.slanyj.eclipse.indenter.toolbars.commands.setTabWidth">
+         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+                  label="4"
+                  style="push">
+            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="4"/>
+         </command>
+         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+                  label="8"
+                  style="push">
+            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="8"/>
+         </command>
+      </menuContribution>
+   </extension>
+
+</plugin>
