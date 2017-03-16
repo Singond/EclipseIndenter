@@ -8,8 +8,6 @@
       <command name="Toggle Spaces for Tabs"
                id="cz.slanyj.eclipse.indenter.commands.insertSpaces"
                categoryId="cz.slanyj.eclipse.indenter.commands.category">
-         <state class="org.eclipse.jface.commands.ToggleState"
-                id="cz.slanyj.eclipse.indenter.state.insertSpaces"/>
       </command>
       <command name="Set Tab Width"
                id="cz.slanyj.eclipse.indenter.commands.setTabWidth"
@@ -45,8 +43,7 @@
             <command id="cz.slanyj.eclipse.indenter.toolbars.commands.insertSpaces"
                      commandId="cz.slanyj.eclipse.indenter.commands.insertSpaces"
                      icon="icons/sample.gif"
-                     tooltip="Insert Spaces for Tabs"
-                     style="toggle">
+                     tooltip="Insert Spaces for Tabs">
             </command>
             <command id="cz.slanyj.eclipse.indenter.toolbars.commands.setTabWidth"
                      commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"

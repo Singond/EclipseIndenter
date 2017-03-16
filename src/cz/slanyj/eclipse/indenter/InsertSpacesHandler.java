@@ -29,30 +29,24 @@ public class InsertSpacesHandler extends AbstractHandler {
 	 * from the application context.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		Command cmd = event.getCommand();
-		// The old value
-		/*boolean old = HandlerUtil.toggleCommandState(cmd);
-		boolean insertSpaces = !old;*/
-		
-		ICommandService cs = (ICommandService) PlatformUI.getWorkbench().getService(ICommandService.class);
-		Command cmd2 = cs.getCommand("cz.slanyj.eclipse.indenter.commands.insertSpaces");
-		State state = cmd2.getState("cz.slanyj.eclipse.indenter.state.insertSpaces");
-		((PersistentState) state).setShouldPersist(true);
-		boolean insertSpaces = (Boolean) state.getValue();
-		state.setValue(!insertSpaces);
-		insertSpaces = (Boolean) state.getValue();
+		boolean insertSpaces = insertSpacesEnabled();
 		
 		IPreferenceStore ps = new ScopedPreferenceStore(InstanceScope.INSTANCE,
 				"org.eclipse.ui.editors");
-		ps.setValue("spacesForTabs", insertSpaces);
-		
-		// Display the selected option
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		MessageDialog.openInformation(
-				window.getShell(),
-				"Setting Space Substitution",
-				"Inserting spaces for tabs is turned " + (insertSpaces ? "on" : "off"));
-		
+		ps.setValue("spacesForTabs", !insertSpaces);
 		return null;
+	}
+	
+	/**
+	 * Decides whether substituting spaces for tabs is enabled.
+	 * Currently checks only the global setting in org.eclipse.ui.editors. 
+	 * @return True if tabs are being substituted by spaces.
+	 */
+	private boolean insertSpacesEnabled() {
+		IPreferenceStore ps = new ScopedPreferenceStore(InstanceScope.INSTANCE,
+				"org.eclipse.ui.editors");
+		boolean enabled = ps.getBoolean("spacesForTabs");
+		Log.debug(enabled ? "SpacesForTabs was enabled" : "SpacesForTabs was not enabled");
+		return enabled;
 	}
 }
