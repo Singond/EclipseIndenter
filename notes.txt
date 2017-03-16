@@ -1,0 +1,3 @@
+# XML editors
+org.eclipse.wst.xml.core indentationChar = space/tab
+org.eclipse.wst.xml.core indentationSize = int
