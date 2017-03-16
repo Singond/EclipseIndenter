@@ -57,6 +57,26 @@
       <menuContribution
             locationURI="menu:cz.slanyj.eclipse.indenter.toolbars.commands.setTabWidth">
          <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+                  label="0"
+                  style="push">
+            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="0"/>
+         </command>
+         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+                  label="1"
+                  style="push">
+            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="1"/>
+         </command>
+         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+                  label="2"
+                  style="push">
+            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="2"/>
+         </command>
+         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+                  label="3"
+                  style="push">
+            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="3"/>
+         </command>
+         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
                   label="4"
                   style="push">
             <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="4"/>
@@ -65,6 +85,11 @@
                   label="8"
                   style="push">
             <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="8"/>
+         </command>
+         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+                  label="16"
+                  style="push">
+            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="16"/>
          </command>
       </menuContribution>
    </extension>
