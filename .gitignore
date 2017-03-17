@@ -3,4 +3,6 @@
 .project
 .settings/
 
-bin/
+# Generated files
+/bin/
+/plugins/
