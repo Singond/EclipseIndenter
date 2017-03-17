@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Indenter
-Bundle-SymbolicName: Indenter;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: cz.slanyj.eclipse.indenter;singleton:=true
+Bundle-Version: 0.1.0.alpha
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime
 Bundle-Activator: cz.slanyj.eclipse.indenter.Activator
