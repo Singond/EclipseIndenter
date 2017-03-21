@@ -37,7 +37,7 @@ public class InsertSpacesHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		boolean insertSpaces = insertSpacesEnabled();
 		for (InsertSpacesSetter s : setters) {
-			s.setInsertSpaces(insertSpaces);
+			s.setInsertSpaces(!insertSpaces);
 		}
 		
 		/*IPreferenceStore ps = new ScopedPreferenceStore(InstanceScope.INSTANCE,
