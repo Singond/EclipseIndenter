@@ -1,5 +1,8 @@
 package cz.slanyj.eclipse.indenter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -16,24 +19,30 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
 
 /**
- * Our sample handler extends AbstractHandler, an IHandler base class.
+ * Handles changing the setting for substituting tabs with spaces.
  * @see org.eclipse.core.commands.IHandler
  * @see org.eclipse.core.commands.AbstractHandler
  */
 public class InsertSpacesHandler extends AbstractHandler {
+	
+	private final List<InsertSpacesSetter> setters = new ArrayList<InsertSpacesSetter>();
 
-	public InsertSpacesHandler() {}
+	public InsertSpacesHandler() {
+		setters.add(new GeneralSetter());
+	}
 
 	/**
-	 * The command has been executed, so extract extract the needed information
-	 * from the application context.
+	 * Sets the spaces substitution setting using all registered setters.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		boolean insertSpaces = insertSpacesEnabled();
+		for (InsertSpacesSetter s : setters) {
+			s.setInsertSpaces(insertSpaces);
+		}
 		
-		IPreferenceStore ps = new ScopedPreferenceStore(InstanceScope.INSTANCE,
+		/*IPreferenceStore ps = new ScopedPreferenceStore(InstanceScope.INSTANCE,
 				"org.eclipse.ui.editors");
-		ps.setValue("spacesForTabs", !insertSpaces);
+		ps.setValue("spacesForTabs", !insertSpaces);*/
 		return null;
 	}
 	
