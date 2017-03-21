@@ -21,6 +21,7 @@ public class TabWidthHandler extends AbstractHandler {
 	
 	public TabWidthHandler() {
 		setters.add(new GeneralSetter());
+		setters.add(new JavaSetter());
 	}
 
 	/**

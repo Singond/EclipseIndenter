@@ -29,6 +29,7 @@ public class InsertSpacesHandler extends AbstractHandler {
 
 	public InsertSpacesHandler() {
 		setters.add(new GeneralSetter());
+		setters.add(new JavaSetter());
 	}
 
 	/**
@@ -39,10 +40,6 @@ public class InsertSpacesHandler extends AbstractHandler {
 		for (InsertSpacesSetter s : setters) {
 			s.setInsertSpaces(!insertSpaces);
 		}
-		
-		/*IPreferenceStore ps = new ScopedPreferenceStore(InstanceScope.INSTANCE,
-				"org.eclipse.ui.editors");
-		ps.setValue("spacesForTabs", !insertSpaces);*/
 		return null;
 	}
 	
