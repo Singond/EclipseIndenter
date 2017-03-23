@@ -31,6 +31,7 @@ public class InsertSpacesHandler extends AbstractHandler {
 		setters.add(new GeneralSetter());
 		setters.add(new JavaSetter());
 		setters.add(new XmlSetter());
+		setters.add(new HtmlSetter());
 	}
 
 	/**
