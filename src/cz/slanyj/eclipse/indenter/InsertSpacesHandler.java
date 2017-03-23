@@ -30,6 +30,7 @@ public class InsertSpacesHandler extends AbstractHandler {
 	public InsertSpacesHandler() {
 		setters.add(new GeneralSetter());
 		setters.add(new JavaSetter());
+		setters.add(new XmlSetter());
 	}
 
 	/**
