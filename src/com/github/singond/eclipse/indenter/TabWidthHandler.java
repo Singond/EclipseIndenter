@@ -1,4 +1,4 @@
-package cz.slanyj.eclipse.indenter;
+package com.github.singond.eclipse.indenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class TabWidthHandler extends AbstractHandler {
 	 * Sets the tab width setting using all registered setters.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		String optString = event.getParameter("cz.slanyj.eclipse.indenter.params.tabWidth");
+		String optString = event.getParameter("com.github.singond.eclipse.indenter.params.tabWidth");
 		short tabWidth = Short.valueOf(optString);
 		for (TabWidthSetter s : setters) {
 			s.setTabWidth(tabWidth);

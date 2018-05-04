@@ -3,32 +3,32 @@
 <plugin>
    <extension point="org.eclipse.ui.commands">
       <category name="Editor Indentation"
-                id="cz.slanyj.eclipse.indenter.commands.category">
+                id="com.github.singond.eclipse.indenter.commands.category">
       </category>
       <command name="Toggle Spaces for Tabs"
-               id="cz.slanyj.eclipse.indenter.commands.insertSpaces"
-               categoryId="cz.slanyj.eclipse.indenter.commands.category">
+               id="com.github.singond.eclipse.indenter.commands.insertSpaces"
+               categoryId="com.github.singond.eclipse.indenter.commands.category">
       </command>
       <command name="Set Tab Width"
-               id="cz.slanyj.eclipse.indenter.commands.setTabWidth"
-               categoryId="cz.slanyj.eclipse.indenter.commands.category">
-         <commandParameter id="cz.slanyj.eclipse.indenter.params.tabWidth"
+               id="com.github.singond.eclipse.indenter.commands.setTabWidth"
+               categoryId="com.github.singond.eclipse.indenter.commands.category">
+         <commandParameter id="com.github.singond.eclipse.indenter.params.tabWidth"
                            name="Tab width"
                            optional="false"/>
       </command>
    </extension>
    
    <extension point="org.eclipse.ui.handlers">
-      <handler commandId="cz.slanyj.eclipse.indenter.commands.insertSpaces"
-               class="cz.slanyj.eclipse.indenter.InsertSpacesHandler">
+      <handler commandId="com.github.singond.eclipse.indenter.commands.insertSpaces"
+               class="com.github.singond.eclipse.indenter.InsertSpacesHandler">
       </handler>
-      <handler commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
-               class="cz.slanyj.eclipse.indenter.TabWidthHandler">
+      <handler commandId="com.github.singond.eclipse.indenter.commands.setTabWidth"
+               class="com.github.singond.eclipse.indenter.TabWidthHandler">
       </handler>
    </extension>
    
    <extension point="org.eclipse.ui.bindings">
-      <key commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+      <key commandId="com.github.singond.eclipse.indenter.commands.setTabWidth"
            contextId="org.eclipse.ui.contexts.window"
            sequence="M1+6"
            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
@@ -39,14 +39,14 @@
       <!-- Toolbar -->
       <menuContribution
             locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
-         <toolbar id="cz.slanyj.eclipse.indenter.toolbars.main">
-            <command id="cz.slanyj.eclipse.indenter.toolbars.commands.insertSpaces"
-                     commandId="cz.slanyj.eclipse.indenter.commands.insertSpaces"
+         <toolbar id="com.github.singond.eclipse.indenter.toolbars.main">
+            <command id="com.github.singond.eclipse.indenter.toolbars.commands.insertSpaces"
+                     commandId="com.github.singond.eclipse.indenter.commands.insertSpaces"
                      icon="icons/sample.gif"
                      tooltip="Insert Spaces for Tabs">
             </command>
-            <command id="cz.slanyj.eclipse.indenter.toolbars.commands.setTabWidth"
-                     commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+            <command id="com.github.singond.eclipse.indenter.toolbars.commands.setTabWidth"
+                     commandId="com.github.singond.eclipse.indenter.commands.setTabWidth"
                      icon="icons/sample.gif"
                      tooltip="Change Tab Width"
                      style="pulldown">
@@ -55,41 +55,41 @@
       </menuContribution>
       <!-- Dropdown items for tab width chooser -->
       <menuContribution
-            locationURI="menu:cz.slanyj.eclipse.indenter.toolbars.commands.setTabWidth">
-         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+            locationURI="menu:com.github.singond.eclipse.indenter.toolbars.commands.setTabWidth">
+         <command commandId="com.github.singond.eclipse.indenter.commands.setTabWidth"
                   label="0"
                   style="push">
-            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="0"/>
+            <parameter name="com.github.singond.eclipse.indenter.params.tabWidth" value="0"/>
          </command>
-         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+         <command commandId="com.github.singond.eclipse.indenter.commands.setTabWidth"
                   label="1"
                   style="push">
-            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="1"/>
+            <parameter name="com.github.singond.eclipse.indenter.params.tabWidth" value="1"/>
          </command>
-         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+         <command commandId="com.github.singond.eclipse.indenter.commands.setTabWidth"
                   label="2"
                   style="push">
-            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="2"/>
+            <parameter name="com.github.singond.eclipse.indenter.params.tabWidth" value="2"/>
          </command>
-         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+         <command commandId="com.github.singond.eclipse.indenter.commands.setTabWidth"
                   label="3"
                   style="push">
-            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="3"/>
+            <parameter name="com.github.singond.eclipse.indenter.params.tabWidth" value="3"/>
          </command>
-         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+         <command commandId="com.github.singond.eclipse.indenter.commands.setTabWidth"
                   label="4"
                   style="push">
-            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="4"/>
+            <parameter name="com.github.singond.eclipse.indenter.params.tabWidth" value="4"/>
          </command>
-         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+         <command commandId="com.github.singond.eclipse.indenter.commands.setTabWidth"
                   label="8"
                   style="push">
-            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="8"/>
+            <parameter name="com.github.singond.eclipse.indenter.params.tabWidth" value="8"/>
          </command>
-         <command commandId="cz.slanyj.eclipse.indenter.commands.setTabWidth"
+         <command commandId="com.github.singond.eclipse.indenter.commands.setTabWidth"
                   label="16"
                   style="push">
-            <parameter name="cz.slanyj.eclipse.indenter.params.tabWidth" value="16"/>
+            <parameter name="com.github.singond.eclipse.indenter.params.tabWidth" value="16"/>
          </command>
       </menuContribution>
    </extension>

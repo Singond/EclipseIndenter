@@ -1,4 +1,4 @@
-package cz.slanyj.eclipse.indenter;
+package com.github.singond.eclipse.indenter;
 
 import java.util.ArrayList;
 import java.util.List;

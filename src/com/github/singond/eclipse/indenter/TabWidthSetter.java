@@ -1,4 +1,4 @@
-package cz.slanyj.eclipse.indenter;
+package com.github.singond.eclipse.indenter;
 
 /**
  * Interface for classes which change the tab width setting.
