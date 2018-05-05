@@ -4,18 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.commands.AbstractHandler;
-import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.commands.State;
 import org.eclipse.core.runtime.preferences.InstanceScope;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.commands.ICommandService;
-import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
-import org.eclipse.jface.commands.PersistentState;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.IPreferenceStore;
 
 /**
@@ -33,21 +25,30 @@ public class InsertSpacesHandler extends AbstractHandler {
 		setters.add(new XmlSetter());
 		setters.add(new HtmlSetter());
 	}
+	
+	/**
+	 * Changes the spaces substitution setting to the given value
+	 * using all registered setters.
+	 *
+	 * @param insertSpaces {@code true} if tabs should be replaced by spaces
+	 */
+	public void setInsertSpaces(boolean insertSpaces) {
+		for (InsertSpacesSetter s : setters) {
+			s.setInsertSpaces(insertSpaces);
+		}
+	}
 
 	/**
 	 * Sets the spaces substitution setting using all registered setters.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		boolean insertSpaces = insertSpacesEnabled();
-		for (InsertSpacesSetter s : setters) {
-			s.setInsertSpaces(!insertSpaces);
-		}
+		setInsertSpaces(!insertSpacesEnabled());
 		return null;
 	}
 	
 	/**
 	 * Decides whether substituting spaces for tabs is enabled.
-	 * Currently checks only the global setting in org.eclipse.ui.editors. 
+	 * Currently checks only the global setting in org.eclipse.ui.editors.
 	 * @return True if tabs are being substituted by spaces.
 	 */
 	private boolean insertSpacesEnabled() {

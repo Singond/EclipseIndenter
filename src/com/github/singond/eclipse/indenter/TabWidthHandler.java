@@ -6,9 +6,6 @@ import java.util.List;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.runtime.preferences.InstanceScope;
-import org.eclipse.ui.preferences.ScopedPreferenceStore;
-import org.eclipse.jface.preference.IPreferenceStore;
 
 /**
  * Handles changing the setting for tab width.
@@ -25,16 +22,25 @@ public class TabWidthHandler extends AbstractHandler {
 		setters.add(new XmlSetter());
 		setters.add(new HtmlSetter());
 	}
+	
+	/**
+	 * Sets the tab width setting to the given value using all
+	 * registered setters.
+	 *
+	 * @param tabWidth the width of tab in spaces
+	 */
+	public void setTabWidth(short tabWidth) {
+		for (TabWidthSetter s : setters) {
+			s.setTabWidth(tabWidth);
+		}
+	}
 
 	/**
 	 * Sets the tab width setting using all registered setters.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		String optString = event.getParameter("com.github.singond.eclipse.indenter.params.tabWidth");
-		short tabWidth = Short.valueOf(optString);
-		for (TabWidthSetter s : setters) {
-			s.setTabWidth(tabWidth);
-		}
+		setTabWidth(Short.valueOf(optString));
 		return null;
 	}
 }
