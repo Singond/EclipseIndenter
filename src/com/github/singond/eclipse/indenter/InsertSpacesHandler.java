@@ -7,6 +7,8 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.preferences.InstanceScope;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.eclipse.jface.preference.IPreferenceStore;
 
@@ -42,7 +44,11 @@ public class InsertSpacesHandler extends AbstractHandler {
 	 * Sets the spaces substitution setting using all registered setters.
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		setInsertSpaces(!insertSpacesEnabled());
+		boolean previous = insertSpacesEnabled();
+		setInsertSpaces(!previous);
+		IEditorPart editor = Indenter.getActiveEditor();
+		EditorSettings settings = Indenter.instance().getEditorSettings();
+		settings.storeInsertSpaces(editor, previous);
 		return null;
 	}
 	

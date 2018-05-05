@@ -6,6 +6,7 @@ import java.util.List;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.ui.IEditorPart;
 
 /**
  * Handles changing the setting for tab width.
@@ -40,7 +41,11 @@ public class TabWidthHandler extends AbstractHandler {
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		String optString = event.getParameter("com.github.singond.eclipse.indenter.params.tabWidth");
-		setTabWidth(Short.valueOf(optString));
+		short tabWidth = Short.valueOf(optString);
+		setTabWidth(tabWidth);
+		IEditorPart editor = Indenter.getActiveEditor();
+		EditorSettings settings = Indenter.instance().getEditorSettings();
+		settings.storeTabWidth(editor, tabWidth);
 		return null;
 	}
 }
