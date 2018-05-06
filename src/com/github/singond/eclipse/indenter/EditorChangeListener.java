@@ -41,44 +41,32 @@ public abstract class EditorChangeListener {
 		
 		@Override
 		public void windowActivated(IWorkbenchWindow win) {
-			Log.debug("Window activated: " + win);
 			win.addPageListener(pageLsnr);
 			win.getActivePage().addPartListener(partLsnr);
 		}
 
 		@Override
-		public void windowClosed(IWorkbenchWindow win) {
-			Log.debug("Window closed: " + win);
-			
-		}
+		public void windowClosed(IWorkbenchWindow win) {}
 
 		@Override
-		public void windowDeactivated(IWorkbenchWindow win) {
-			Log.debug("Window deactivated: " + win);
-		}
+		public void windowDeactivated(IWorkbenchWindow win) {}
 
 		@Override
-		public void windowOpened(IWorkbenchWindow win) {
-			Log.debug("Window opened: " + win);
-		}
+		public void windowOpened(IWorkbenchWindow win) {}
 	}
 	
 	private class PageListener implements IPageListener {
 		
 		@Override
 		public void pageActivated(IWorkbenchPage page) {
-			Log.debug("Page activated: " + page);
 			page.addPartListener(partLsnr);
 		}
 
 		@Override
-		public void pageClosed(IWorkbenchPage page) {
-			Log.debug("Page closed: " + page);
-		}
+		public void pageClosed(IWorkbenchPage page) {}
 
 		@Override
 		public void pageOpened(IWorkbenchPage page) {
-			Log.debug("Page opened: " + page);
 			Log.debug("Opening new workbench page, attaching page listener");
 			page.addPartListener(partLsnr);
 		}
@@ -89,7 +77,6 @@ public abstract class EditorChangeListener {
 
 		@Override
 		public void partActivated(IWorkbenchPart part) {
-			Log.debug("Part activated: " + part);
 			if (part instanceof IEditorPart) {
 				IEditorPart editor = (IEditorPart) part;
 				editorChanged(editor);
@@ -97,23 +84,15 @@ public abstract class EditorChangeListener {
 		}
 
 		@Override
-		public void partBroughtToTop(IWorkbenchPart part) {
-			Log.debug("Part brought to top: " + part);
-		}
+		public void partBroughtToTop(IWorkbenchPart part) {}
 
 		@Override
-		public void partClosed(IWorkbenchPart part) {
-			Log.debug("Part closed: " + part);
-		}
+		public void partClosed(IWorkbenchPart part) {}
 
 		@Override
-		public void partDeactivated(IWorkbenchPart part) {
-			Log.debug("Part deactivated: " + part);
-		}
+		public void partDeactivated(IWorkbenchPart part) {}
 
 		@Override
-		public void partOpened(IWorkbenchPart part) {
-			Log.debug("Part opened: " + part);
-		}
+		public void partOpened(IWorkbenchPart part) {}
 	}
 }
