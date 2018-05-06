@@ -32,14 +32,23 @@ public class EditorSettings {
 	}
 	
 	/**
-	 * Gets the preferred spaces substitution setting for the given
-	 * editor or null, if no value has been set.
+	 * Gets the most recent space substitution setting applied
+	 * to the given editor.
 	 *
 	 * @param editor the editor
-	 * @return the last tab width setting applied to {@code editor}
+	 * @return the most recent space substitution setting applied
+	 *         to {@code editor}
+	 * @throws IllegalStateException if no value has been applied to
+	 *         {@code editor} yet
 	 */
 	public boolean getInsertSpaces(IEditorPart editor) {
-		return insertSpacesSettings.get(editor);
+		Boolean value = insertSpacesSettings.get(editor);
+		if (value != null) {
+			return value.booleanValue();
+		} else {
+			throw new IllegalStateException("No value has been set for "
+			                                + editor + " yet");
+		}
 	}
 	
 	/**
@@ -49,9 +58,12 @@ public class EditorSettings {
 	 * @param editor the editor
 	 * @return the last tab width setting applied to {@code editor}
 	 */
-	public boolean storeInsertSpaces(IEditorPart editor, boolean value) {
+	public void storeInsertSpaces(IEditorPart editor, boolean value) {
 		Log.debug("Storing spaces setting for " + editor + ": " + value);
-		return insertSpacesSettings.put(editor, value);
+		if (editor == null) {
+			throw new NullPointerException("Editor cannot be null");
+		}
+		insertSpacesSettings.put(editor, value);
 	}
 	
 	/**
@@ -66,25 +78,37 @@ public class EditorSettings {
 	}
 	
 	/**
-	 * Gets the preferred tab width for the given editor
-	 * or -1, if no value has been set.
+	 * Gets the most recent tab width setting applied to the given editor.
 	 *
 	 * @param editor the editor
-	 * @return the last tab width setting applied to {@code editor}
+	 * @return the most recent tab width setting applied to {@code editor}
+	 * @throws IllegalStateException if no value has been applied to
+	 *         {@code editor} yet
 	 */
 	public short getTabWidth(IEditorPart editor) {
-		return tabWidthSettings.get(editor);
+		Short w = tabWidthSettings.get(editor);
+		if (w != null) {
+			return w.shortValue();
+		} else {
+			throw new IllegalStateException("No value has been set for "
+			                                + editor + " yet");
+		}
 	}
 	
 	/**
-	 * Gets the preferred tab width for the given editor
-	 * or -1, if no value has been set.
+	 * Stores the preferred tab width for the given editor.
 	 *
 	 * @param editor the editor
-	 * @return the last tab width setting applied to {@code editor}
+	 * @param width the tab width
 	 */
-	public short storeTabWidth(IEditorPart editor, short width) {
+	public void storeTabWidth(IEditorPart editor, short width) {
 		Log.debug("Storing tab width setting for " + editor + ": " + width);
-		return tabWidthSettings.put(editor, width);
+		if (editor == null) {
+			throw new NullPointerException("Editor cannot be null");
+		}
+		if (width < 0) {
+			throw new IllegalArgumentException("Tab width must not be negative");
+		}
+		tabWidthSettings.put(editor, width);
 	}
 }
