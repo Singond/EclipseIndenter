@@ -47,7 +47,7 @@
             </command>
             <command id="com.github.singond.eclipse.indenter.toolbars.commands.setTabWidth"
                      commandId="com.github.singond.eclipse.indenter.commands.setTabWidth"
-                     icon="icons/sample.gif"
+                     icon="icons/indent-width.gif"
                      tooltip="Change Tab Width"
                      style="pulldown">
             </command>
