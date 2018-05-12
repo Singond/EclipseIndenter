@@ -42,7 +42,7 @@
          <toolbar id="com.github.singond.eclipse.indenter.toolbars.main">
             <command id="com.github.singond.eclipse.indenter.toolbars.commands.insertSpaces"
                      commandId="com.github.singond.eclipse.indenter.commands.insertSpaces"
-                     icon="icons/sample.gif"
+                     icon="icons/space-tabs.gif"
                      tooltip="Insert Spaces for Tabs">
             </command>
             <command id="com.github.singond.eclipse.indenter.toolbars.commands.setTabWidth"
