@@ -38,7 +38,7 @@
    <extension point="org.eclipse.ui.menus">
       <!-- Toolbar -->
       <menuContribution
-            locationURI="toolbar:org.eclipse.ui.main.toolbar">
+            locationURI="toolbar:org.eclipse.ui.edit.text.actionSet.presentation?after=Presentation">
          <toolbar id="com.github.singond.eclipse.indenter.toolbars.main"
                   label="Editor Indentation">
             <command id="com.github.singond.eclipse.indenter.toolbars.commands.insertSpaces"
